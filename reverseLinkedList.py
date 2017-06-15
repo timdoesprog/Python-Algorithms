@@ -1,4 +1,5 @@
 # 15.06.2017
+# reversing a linked list with an iterative method
 
 
 class Node:
@@ -58,15 +59,18 @@ class LinkedList:
             print(current.data)
             current = current.next
 
-
-myList = LinkedList()
-myList.insert(5)
-myList.insert(2)
-myList.insert(6, 2)
-myList.insert(1, 1)
-myList.insert(8, 5)
-myList.delete(0)
-myList.delete(3)
-myList.delete(-2)
-myList.delete(100)
-myList.printList()
+    def reverse(self):
+        # list is empty
+        if not self.head:
+            return
+        # list has only one item in it
+        if not self.head.next:
+            return
+        current = self.head
+        previous = None
+        while current:
+            nextNode = current.next
+            current.next = previous
+            previous = current
+            current = nextNode
+        self.head = previous
