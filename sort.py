@@ -25,6 +25,8 @@ def bubblesort(array):
 # edited for better readability
 
 def mergeSort(array):
+    print(array)
+    print()
     # if array is of size 1 it is already sorted, so nothing needs to be done
     if len(array) > 1:
         # split the array into two smaller parts // divide and conquer
@@ -60,9 +62,12 @@ def mergeSort(array):
             array[k] = right_half[j]
             j += 1
             k += 1
+        print(array)
+        print()
 
 
-array = [random.randint(1, 100) for i in range(100)]
+array = [random.randint(1, 100) for i in range(10)]
+print(array)
 mergeSort(array)
 print(array)
 
