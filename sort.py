@@ -65,10 +65,36 @@ def mergeSort(array):
         print(array)
         print()
 
+# Counting Sort
+#
+
+
+def countingSort(array):
+    # find k, the largest number in the array
+    k = max(array) + 1
+    # initialize countingArray with all zeros, k space
+    countingArray = []
+    for i in range(k):
+        countingArray.append(0)
+    # count how often a number appears in the array
+    for i in range(len(array)):
+        countingArray[array[i]] += 1
+    # summarizing for indices
+    for i in range(1, k):
+        countingArray[i] = countingArray[i - 1] + countingArray[i]
+    # create result array
+    result = []
+    for i in range(len(array)):
+        result.append(0)
+    for i in range(len(array) - 1, -1, -1):
+        result[countingArray[array[i]] - 1] = array[i]
+        countingArray[array[i]] -= 1
+    return result
+
 
 array = [random.randint(1, 100) for i in range(10)]
 print(array)
-mergeSort(array)
+print(countingSort(array))
 print(array)
 
 # bubblesort(array)
